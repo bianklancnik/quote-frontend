@@ -1,38 +1,268 @@
-.App {
-  text-align: center;
+/* Body */
+.body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 60px 1fr 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrap {
+  overflow-y: scroll;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrap > * {
+  padding: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Font */
+* {
+  font-family: Raleway;
+  font-style: normal;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.h1 {
+  font-size: 98px;
+}
+
+.h2 {
+  font-size: 61px;
+}
+
+.h3 {
+  font-size: 49px;
+}
+
+.h4 {
+  font-size: 35px;
+}
+
+.h5 {
+  font-size: 24px;
+}
+
+.content {
+  font-size: 12px;
+}
+
+.font-white {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.font-orange {
+  color: #de8667;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Padding */
+.padding-five {
+  padding: 5%;
+}
+
+/* Navigation */
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4% 0 4%;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px;
+
+  width: 220px;
+}
+
+/* Button */
+.primary-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  width: 100px;
+  height: 32px;
+
+  cursor: pointer;
+
+  color: white;
+  font-size: 12px;
+
+  background: linear-gradient(257.39deg, #efb467 0%, #de8667 100%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 32px;
+}
+
+.alternative-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+
+  min-width: 100px;
+  height: 36px;
+
+  color: #de8667;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 32px;
+  border: solid 1px #de8667;
+}
+
+/* Landing Page */
+.landing-page {
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+}
+
+.landing-page .primary-button {
+  margin-top: 3%;
+}
+
+.landing-page .h2 {
+  justify-content: center;
+}
+
+.landing-page .width {
+  width: 50%;
+  text-align: center;
+}
+
+/* Boxes */
+.box-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.box-column {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.half {
+  flex: 1 1 50%;
+}
+
+.full {
+  flex: 1 1 100%;
+}
+
+/* Align text */
+.left-text {
+  text-align: left;
+}
+
+.right-text {
+  text-align: right;
+}
+
+.center-align {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quote card */
+.card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 500px;
+  min-height: 140px;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.card .number {
+  margin: 3% 0 3% 0;
+}
+
+.voting {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+
+  width: 10%;
+}
+
+.quote {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 2%;
+
+  margin-left: 5%;
+  width: 70%;
+}
+
+.quote-text {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.quote-user {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.quote-user-profile-picture {
+  width: 24px;
+  height: 24px;
+
+  background: url(/public/favicon.ico);
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15));
+  border-radius: 50%;
+  margin-right: 5%;
+}
+
+.quote-grid {
+  justify-content: space-evenly;
+}
+
+.quote-grid-card {
+  margin-top: 1%;
+}
+
+/* Images */
+.quotes-logo {
+  width: 25px;
+}
+
+/* Footer */
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1px 0 1px;
+
+  background: linear-gradient(257.39deg, #efb467 0%, #de8667 100%);
+
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 32px 32px 0px 0px;
+}
+
+.footer-text {
+  margin-right: 5%;
+}
+
+.footer-logo {
+  margin-left: 4%;
 }
