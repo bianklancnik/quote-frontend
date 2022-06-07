@@ -65,7 +65,7 @@ const Home = () => {
             <QuoteCard />
           </div>
         </div>
-        <div className="box-row full center-align">
+        <div className="box-row full center-align padding-ten">
           <AlternativeButton text="Sign up for more" />
         </div>
       </div>

@@ -58,6 +58,10 @@
   padding: 5%;
 }
 
+.padding-ten {
+  padding: 10%;
+}
+
 /* Navigation */
 .nav-bar {
   display: flex;
