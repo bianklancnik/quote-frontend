@@ -12,17 +12,19 @@ const NavBar = ({ showSignUp = true, showLogIn = true }: NavBarProps) => {
   return (
     <div className="nav-bar">
       <div className="logo">
-        <img src="quotesNav.png" alt="" />
+        <Link to="/" className="link">
+          <img src="quotesNav.png" alt="" />
+        </Link>
       </div>
       <div className="right-side">
+        {showLogIn && (
+          <Link to="/login" className="link">
+            <AlternativeButton text="Login" />
+          </Link>
+        )}
         {showSignUp && (
           <Link to="/signup" className="link">
             <PrimaryButton text="Sign up" />
-          </Link>
-        )}
-        {showLogIn && (
-          <Link to="/" className="link">
-            <AlternativeButton text="Login" />
           </Link>
         )}
       </div>

@@ -1,27 +1,58 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
 import NavBar from "../components/common/NavBar";
 import PrimaryButton from "../components/common/PrimaryButton";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [conPassword, setConPassword] = useState("");
+
+  const emailChange = (email: string) => {
+    setEmail(email);
+  };
+  const firstNameChange = (email: string) => {
+    setFirstName(email);
+  };
+  const lastNameChange = (email: string) => {
+    setLastName(email);
+  };
+  const passwordChange = (password: string) => {
+    setPassword(password);
+  };
+  const confirmPasswordChange = (conPassword: string) => {
+    setConPassword(conPassword);
+  };
+
   return (
     <div className="body">
       <NavBar showSignUp={false} />
       <div className="column-content">
         <div>
-          <div className="h4" style={{ textAlign: "center" }}>
+          <div className="h4 text-center">
             What is your <span className="font-orange">name?</span>
           </div>
-          <div className="h6">
+          <div className="h6 text-center">
             Your name will appear on quotes and your public profle.
           </div>
         </div>
         <div>
           <img className="user-profile-picture" alt="" />
         </div>
-        <div style={{ width: "100%" }}>
-          <p>Email</p>
-          <Input text="example@net.com" type="text" value="" onValueChange="" />
+        <div className="width-100">
+          <p style={{ marginBottom: "2%" }} className="content">
+            Email
+          </p>
+          <Input
+            text="example@net.com"
+            type="email"
+            value={email}
+            onValueChange={emailChange}
+          />
         </div>
         <div
           style={{
@@ -32,21 +63,49 @@ const SignUp = () => {
           }}
         >
           <div style={{ width: "48%" }}>
-            <p>First name</p>
-            <Input text="John" type="text" value="" onValueChange="" />
+            <p style={{ marginBottom: "2%" }} className="content">
+              First name
+            </p>
+            <Input
+              text="John"
+              type="text"
+              value={firstName}
+              onValueChange={firstNameChange}
+            />
           </div>
           <div style={{ width: "48%" }}>
-            <p>Last name</p>
-            <Input text="Scott" type="text" value="" onValueChange="" />
+            <p style={{ marginBottom: "2%" }} className="content">
+              Last name
+            </p>
+            <Input
+              text="Scott"
+              type="text"
+              value={lastName}
+              onValueChange={lastNameChange}
+            />
           </div>
         </div>
-        <div style={{ width: "100%" }}>
-          <p>Password</p>
-          <Input text="" type="password" value="" onValueChange="" />
+        <div className="width-100">
+          <p style={{ marginBottom: "2%" }} className="content">
+            Password
+          </p>
+          <Input
+            text=""
+            type="password"
+            value={password}
+            onValueChange={passwordChange}
+          />
         </div>
-        <div style={{ width: "100%" }}>
-          <p>Confirm password</p>
-          <Input text="" type="password" value="" onValueChange="" />
+        <div className="width-100">
+          <p style={{ marginBottom: "2%" }} className="content">
+            Confirm password
+          </p>
+          <Input
+            text=""
+            type="password"
+            value={conPassword}
+            onValueChange={confirmPasswordChange}
+          />
         </div>
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
@@ -62,7 +121,9 @@ const SignUp = () => {
           }}
         >
           <p>Already have an account?</p>
-          <p className="font-orange">Sign in</p>
+          <Link to="/login" className="link">
+            <p className="font-orange">Sign in</p>
+          </Link>
         </div>
       </div>
       <Footer />
