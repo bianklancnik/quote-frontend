@@ -3,7 +3,7 @@ import Input from "../components/common/Input";
 import NavBar from "../components/common/NavBar";
 import PrimaryButton from "../components/common/PrimaryButton";
 
-const SignUp = () => {
+const LogIn = () => {
   return (
     <div className="body">
       <NavBar showSignUp={false} />
@@ -70,4 +70,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default LogIn;

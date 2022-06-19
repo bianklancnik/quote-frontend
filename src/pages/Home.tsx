@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import AlternativeButton from "../components/common/AlternativeButton";
 import Footer from "../components/common/Footer";
 import NavBar from "../components/common/NavBar";
@@ -18,7 +19,9 @@ const Home = () => {
             Quotastic is free online platform for you to explore the quips,
             quotes, and proverbs. Sign up and express yourself.
           </div>
-          <PrimaryButton text="Sign up" />
+          <Link to="/signup" className="link">
+            <PrimaryButton text="Sign up" />
+          </Link>
         </div>
         <div className="box-row half center-align">
           <QuoteCard />
@@ -66,7 +69,9 @@ const Home = () => {
           </div>
         </div>
         <div className="box-row full center-align padding-ten">
-          <AlternativeButton text="Sign up for more" />
+          <Link to="/signup" className="link">
+            <AlternativeButton text="Sign up for more" />
+          </Link>
         </div>
       </div>
       <Footer />
