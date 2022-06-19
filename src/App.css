@@ -17,6 +17,15 @@ body * {
   padding: 5px;
 }
 
+/* Common */
+.text-center {
+  text-align: center;
+}
+
+.width-100 {
+  width: 100%;
+}
+
 /* Font */
 * {
   font-family: Raleway;
@@ -82,7 +91,7 @@ body * {
 
 .right-side {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0px;
 
@@ -159,7 +168,7 @@ body * {
 .column-content {
   display: flex;
   flex-flow: column;
-  width: 30%;
+  width: 90%;
   margin: auto;
   align-items: center;
   gap: 10px;
@@ -316,4 +325,10 @@ body * {
 
 .footer-logo {
   margin-left: 4%;
+}
+
+@media screen and (min-width: 768px) {
+  .column-content {
+    width: 30%;
+  }
 }
