@@ -1,25 +1,77 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
 import NavBar from "../components/common/NavBar";
 import PrimaryButton from "../components/common/PrimaryButton";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
 
+  const [error, setError] = useState(false);
+  const [eMsg, setEMsg] = useState("");
+
+  const signUp = () => {
+    setError(false);
+    setEMsg("");
+    if (email || firstName || lastName || password || conPassword) {
+      let signUpUrl = "http://localhost:5000/auth/signup";
+      let signUpData = {
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        password: password,
+        confirmPassword: conPassword,
+      };
+
+      fetch(signUpUrl, {
+        method: "post",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify(signUpData),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            return res.text().then((text) => {
+              setError(true);
+              throw new Error(text);
+            });
+          } else {
+            return navigate("/login");
+          }
+        })
+        .catch((err) => {
+          const x = JSON.parse(err["message"]);
+          let msg;
+          if (Array.isArray(x)) {
+            msg = x["message" as any].filter(
+              (v: any, i: any, a: any) =>
+                a.findIndex((v2: any) => v2.id === v.id) === i
+            );
+          } else msg = x["message"];
+          setEMsg(msg);
+        });
+    } else {
+      setError(true);
+      setEMsg("Fields must not be empty!");
+    }
+  };
+
   const emailChange = (email: string) => {
     setEmail(email);
   };
-  const firstNameChange = (email: string) => {
-    setFirstName(email);
+  const firstNameChange = (firstName: string) => {
+    setFirstName(firstName);
   };
-  const lastNameChange = (email: string) => {
-    setLastName(email);
+  const lastNameChange = (lastName: string) => {
+    setLastName(lastName);
   };
   const passwordChange = (password: string) => {
     setPassword(password);
@@ -49,7 +101,7 @@ const SignUp = () => {
           </p>
           <Input
             text="example@net.com"
-            type="email"
+            type="text"
             value={email}
             onValueChange={emailChange}
           />
@@ -107,10 +159,20 @@ const SignUp = () => {
             onValueChange={confirmPasswordChange}
           />
         </div>
+        {error && (
+          <div
+            className="content"
+            style={{ color: "red", textAlign: "center" }}
+          >
+            {eMsg}
+          </div>
+        )}
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <PrimaryButton text="Sign Up" />
+          <div onClick={signUp}>
+            <PrimaryButton text="Sign Up" />
+          </div>
         </div>
         <div
           style={{

@@ -7,11 +7,13 @@ import PrimaryButton from "../components/common/PrimaryButton";
 import QuoteCard from "../components/common/QuoteCard";
 
 const Home = () => {
+  const user = JSON.parse(localStorage.getItem("userToken") || "{}");
   return (
     <div className="body">
       <NavBar />
       <div className="landing-page wrap">
         <div className="box-row half left-text padding-five">
+          {console.log(user)}
           <div className="h1">
             Welcome to <span className="font-orange">Quotastic</span>
           </div>
