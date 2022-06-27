@@ -1,9 +1,22 @@
-import { Route, Routes } from "react-router";
+import { Navigate, Outlet, Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
+
+type ProtectedRouteType = {
+  user: any;
+  redirectPath: any;
+};
+
+const ProtectedRoute = ({ user, redirectPath = "/" }: ProtectedRouteType) => {
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return <Outlet />;
+};
 
 function App() {
   return (
