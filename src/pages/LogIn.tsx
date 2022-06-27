@@ -28,7 +28,6 @@ const LogIn = () => {
       fetch(logInUrl, {
         method: "post",
         headers: new Headers({
-          //Authorization: "bearer " + this.props.authState.accessToken.value,
           "Content-Type": "application/json",
         }),
         body: JSON.stringify(logInData),
@@ -45,7 +44,7 @@ const LogIn = () => {
         })
         .then((result) => {
           localStorage.setItem(
-            "userToken",
+            "accessToken",
             JSON.stringify(result["accessToken"])
           );
           return navigate("/");

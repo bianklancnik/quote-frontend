@@ -26,6 +26,10 @@ body * {
   width: 100%;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* Font */
 * {
   font-family: Raleway;
@@ -94,8 +98,16 @@ body * {
   flex-direction: row-reverse;
   justify-content: space-between;
   padding: 0px;
-
   width: 220px;
+}
+
+.right-side-logged-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 50%;
 }
 
 /* Button */
@@ -330,5 +342,8 @@ body * {
 @media screen and (min-width: 768px) {
   .column-content {
     width: 30%;
+  }
+  .right-side-logged-in {
+    width: 17%;
   }
 }

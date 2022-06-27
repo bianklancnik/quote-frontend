@@ -1,6 +1,12 @@
-import React from "react";
+import { QuoteType } from "../../interfaces/QuoteType";
 
-const QuoteCard = () => {
+type QuoteCardType = {
+  firstName: string;
+  lastName: string;
+  quote: QuoteType;
+};
+
+const QuoteCard = ({ quote, firstName, lastName }: QuoteCardType) => {
   return (
     <div className="card">
       <div className="voting">
@@ -21,7 +27,7 @@ const QuoteCard = () => {
             />
           </svg>
         </div>
-        <div className="number">100</div>
+        <div className="number">{quote.upvotes}</div>
         <div>
           <svg
             width="13"
@@ -41,13 +47,13 @@ const QuoteCard = () => {
         </div>
       </div>
       <div className="quote">
-        <div className="quote-text">
-          Live a life you will remember, my father told me when i was just a
-          child aaaaaaaaaa aaaaaaaaaaa aaaaaaa aaaaaaaaa aaaaa
-        </div>
+        {quote.title}
+        <div className="quote-text">{quote.desc}</div>
         <div className="quote-user">
           <img className="quote-user-profile-picture" alt="" />
-          <div className="content">John Scott</div>
+          <div className="content">
+            {firstName} {lastName}
+          </div>
         </div>
       </div>
     </div>
