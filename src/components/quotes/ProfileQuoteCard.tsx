@@ -1,12 +1,21 @@
 import { QuoteType } from "../../interfaces/QuoteType";
+import { IoSettingsOutline, IoCloseOutline } from "react-icons/io5";
 
-type QuoteCardType = {
+type UserQuoteCardType = {
   firstName: string;
   lastName: string;
   quote: QuoteType;
+  deleteQuote: any;
+  editQuote: any;
 };
 
-const QuoteCard = ({ quote, firstName, lastName }: QuoteCardType) => {
+const ProfileQuoteCard = ({
+  quote,
+  firstName,
+  lastName,
+  deleteQuote,
+  editQuote,
+}: UserQuoteCardType) => {
   return (
     <div className="card">
       <div className="voting">
@@ -47,7 +56,6 @@ const QuoteCard = ({ quote, firstName, lastName }: QuoteCardType) => {
         </div>
       </div>
       <div className="quote">
-        {quote.title}
         <div className="quote-text">{quote.desc}</div>
         <div className="quote-user">
           <img className="quote-user-profile-picture" alt="" />
@@ -56,8 +64,20 @@ const QuoteCard = ({ quote, firstName, lastName }: QuoteCardType) => {
           </div>
         </div>
       </div>
+      <div className="voting">
+        <IoSettingsOutline
+          color="#de8667"
+          style={{ marginBottom: "60%", cursor: "pointer" }}
+          onClick={() => editQuote(quote)}
+        />
+        <IoCloseOutline
+          color="#de8667"
+          style={{ cursor: "pointer" }}
+          onClick={() => deleteQuote(quote.id)}
+        />
+      </div>
     </div>
   );
 };
 
-export default QuoteCard;
+export default ProfileQuoteCard;

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import AlternativeButton from "./AlternativeButton";
 import PrimaryButton from "./PrimaryButton";
@@ -6,27 +5,43 @@ import PrimaryButton from "./PrimaryButton";
 type NavBarProps = {
   showSignUp?: boolean;
   showLogIn?: boolean;
+  toggleSeen?: any;
+  orange?: boolean;
 };
 
-const NavBar = ({ showSignUp = true, showLogIn = true }: NavBarProps) => {
+const NavBar = ({
+  showSignUp = true,
+  showLogIn = true,
+  toggleSeen,
+  orange,
+}: NavBarProps) => {
   const isLoggedIn = localStorage.getItem("accessToken");
   return (
-    <div className="nav-bar">
+    <div className={`nav-bar ${orange && "nav-bar-orange"}`}>
       <div className="logo">
         <Link to="/" className="link">
-          <img src="quotesNav.png" alt="" />
+          <img
+            src={`${orange ? "quotesNavWhite.png" : "quotesNav.png"}`}
+            alt=""
+          />
         </Link>
       </div>
       {isLoggedIn ? (
         <div className="right-side-logged-in">
-          <Link to="/" className="link font-orange h6">
+          <Link
+            to="/"
+            className={`link h6 ${orange ? "font-white" : "font-orange"}`}
+          >
             Home
           </Link>
-          <Link to="" className="link font-orange h6">
+          <Link
+            to=""
+            className={`link h6 ${orange ? "font-white" : "font-orange"}`}
+          >
             Settings
           </Link>
           <div
-            className="font-orange h6 pointer"
+            className="h6 pointer"
             onClick={() => {
               localStorage.clear();
               window.location.reload();
@@ -34,23 +49,33 @@ const NavBar = ({ showSignUp = true, showLogIn = true }: NavBarProps) => {
           >
             Logout
           </div>
-          <img
-            src="favicon.ico"
-            style={{
-              width: "26px",
-              height: "26px",
-              filter: "drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15))",
-              borderRadius: "50%",
-            }}
-            alt=""
-          />
           <Link
-            to=""
-            className="link font-orange h6"
-            style={{ display: "flex", alignItems: "center" }}
+            to="/profile"
+            className="link"
+            style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
           >
-            <img src="plusSign.png" alt="" />
+            <img
+              src="favicon.ico"
+              style={{
+                width: "30px",
+                height: "30px",
+                filter: "drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.15))",
+                borderRadius: "50%",
+              }}
+              alt=""
+            />
           </Link>
+          <div
+            className="h6"
+            style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+            onClick={() => toggleSeen()}
+          >
+            <img
+              style={{ width: "30px", height: "30px" }}
+              src="plusSign.png"
+              alt=""
+            />
+          </div>
         </div>
       ) : (
         <div className="right-side">

@@ -86,7 +86,7 @@ const SignUp = () => {
       <div className="column-content">
         <div>
           <div className="h4 text-center">
-            What is your <span className="font-orange">name?</span>
+            What is your <span className="font-orange h4">name?</span>
           </div>
           <div className="h6 text-center">
             Your name will appear on quotes and your public profle.

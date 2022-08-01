@@ -4,8 +4,10 @@ import AlternativeButton from "../components/common/AlternativeButton";
 import Footer from "../components/common/Footer";
 import NavBar from "../components/common/NavBar";
 import PrimaryButton from "../components/common/PrimaryButton";
-import QuoteCard from "../components/common/QuoteCard";
+import QuoteCard from "../components/quotes/QuoteCard";
 import { UserType } from "../interfaces/UserType";
+import { QuoteType } from "../interfaces/QuoteType";
+import AddQuote from "../components/quotes/AddQuote";
 
 const Home = () => {
   const isLoggedIn = localStorage.getItem("accessToken");
@@ -13,7 +15,6 @@ const Home = () => {
   const getQuotes = () => {
     fetch("http://localhost:5000/auth/list", {
       headers: {
-        //Authorization: "bearer " + this.props.authState.accessToken.value,
         "Content-Type": "application/json",
       },
     })
@@ -77,15 +78,36 @@ const Home = () => {
     });
   };
 
+  const quoteAdd = (quote: QuoteType) => {
+    const newUser = quotes.map((user) => {
+      if (user.id === JSON.parse(localStorage.getItem("id") || "")) {
+        const firstName = user.firstName;
+        const lastName = user.lastName;
+        const id = user.id;
+        const quotes = [...user.quotes, quote];
+        return { id, firstName, lastName, quotes };
+      }
+      return user;
+    });
+    setQuotes(newUser);
+  };
+
+  const [seen, setSeen] = useState<boolean>(false);
+
+  const toggleSeen = () => {
+    setSeen(!seen);
+  };
+
   return (
     <div className="body">
-      <NavBar />
-      <div className="landing-page wrap">
+      <NavBar toggleSeen={toggleSeen} />
+      {seen ? <AddQuote toggle={toggleSeen} onQuoteAdd={quoteAdd} /> : null}
+      <div className={`landing-page wrap ${seen && "blur"}`}>
         {!isLoggedIn ? (
           <>
-            <div className="box-row half left-text padding-five">
+            <div className="half left-text padding-five">
               <div className="h1">
-                Welcome to <span className="font-orange">Quotastic</span>
+                Welcome to <span className="font-orange h1">Quotastic</span>
               </div>
               <div className="h5">
                 Quotastic is free online platform for you to explore the quips,
@@ -97,10 +119,10 @@ const Home = () => {
             </div>
 
             <div className="box-row half center-align">{showRandomQuote()}</div>
-            <div className="box-row full h2 padding-five">
-              <div className="width">
+            <div className="box-row full padding-five">
+              <div className="width h2">
                 Explore the world of{" "}
-                <span className="font-orange">fantastic quotes</span>
+                <span className="font-orange h2">fantastic quotes</span>
               </div>
             </div>
           </>
