@@ -5,7 +5,7 @@ import Footer from "../components/common/Footer";
 import Input from "../components/common/Input";
 import NavBar from "../components/common/NavBar";
 
-const LogIn = () => {
+const LogIn = ({ onLogIn }: any) => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -47,6 +47,8 @@ const LogIn = () => {
             "accessToken",
             JSON.stringify(result["accessToken"])
           );
+          localStorage.setItem("id", JSON.stringify(result["id"]));
+          onLogIn();
           return navigate("/");
         })
         .catch((err) => {
@@ -79,7 +81,7 @@ const LogIn = () => {
       <div className="column-content">
         <div>
           <div className="h4 text-center" style={{ marginBottom: "2%" }}>
-            Welcome <span className="font-orange">back!</span>
+            Welcome <span className="font-orange h4">back!</span>
           </div>
           <div className="h6 text-center" style={{ marginBottom: "4%" }}>
             Thank you for coming back. Hope you have a good day and inspire
