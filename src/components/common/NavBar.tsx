@@ -35,7 +35,7 @@ const NavBar = ({
             Home
           </Link>
           <Link
-            to=""
+            to="/settings"
             className={`link h6 ${orange ? "font-white" : "font-orange"}`}
           >
             Settings

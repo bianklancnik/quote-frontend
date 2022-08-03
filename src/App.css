@@ -5,9 +5,9 @@
   grid-template-rows: 60px 1fr 50px;
 }
 
-body * {
+/*body * {
   outline: auto;
-}
+}*/
 
 .wrap {
   overflow-y: scroll;
@@ -125,7 +125,7 @@ body * {
   align-items: center;
   padding: 8px 16px;
 
-  width: 100px;
+  min-width: 100px;
   height: 32px;
 
   cursor: pointer;
@@ -256,7 +256,7 @@ body * {
 
 .quote {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   padding: 2%;
 
   margin-left: 5%;
@@ -264,10 +264,8 @@ body * {
 }
 
 .quote-text {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
   margin-bottom: 5%;
+  overflow-wrap: break-word;
 }
 
 .quote-user {
