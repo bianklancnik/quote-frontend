@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import Profile from "./pages/Profile";
+import ProfileSettings from "./pages/ProfileSettings";
 import SignUp from "./pages/SignUp";
 
 type ProtectedRouteType = {
@@ -38,6 +39,7 @@ function App() {
           </Route>
           <Route element={<ProtectedRoute user={user} />}>
             <Route path="profile" element={<Profile />} />
+            <Route path="settings" element={<ProfileSettings />} />
           </Route>
         </Route>
       </Routes>
