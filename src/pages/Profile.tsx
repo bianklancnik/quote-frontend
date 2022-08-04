@@ -131,21 +131,12 @@ const Profile = () => {
         />
       ) : null}
       <div
-        className={`landing-page center-align wrap ${seen && "blur"} ${
-          seenEdit && "blur"
-        } ${seenDelete && "blur"}`}
-        style={{ display: "flex" }}
+        className={`landing-page wrap ${seen && "blur"} ${seenEdit && "blur"} ${
+          seenDelete && "blur"
+        }`}
+        style={{ display: "flex", justifyContent: "center" }}
       >
-        <div
-          className="box-row full"
-          style={{
-            backgroundColor: "#de8667",
-            height: "30%",
-            display: "flex",
-            alignItems: "center",
-            flexFlow: "column",
-          }}
-        >
+        <div className="box-row full profile-name">
           <img
             src="favicon.ico"
             alt=""
@@ -158,35 +149,34 @@ const Profile = () => {
             }}
           />
           <div className="font-white h4">{`${user?.firstName} ${user?.lastName}`}</div>
-        </div>
-        <div className="box-row quote-karma">
-          <div>
-            <div>Quotes</div>
-            <div className="h5 font-orange">{user?.quotes.length}</div>
+          <div className="box-row quote-karma">
+            <div>
+              <div>Quotes</div>
+              <div className="h5 font-orange">{user?.quotes.length}</div>
+            </div>
+            <div>
+              <div>Quote karma</div>
+              <div className="h5">{calculateQuoteKarma()}</div>
+            </div>
           </div>
-          <div>
-            <div>Quote karma</div>
-            <div className="h5">{calculateQuoteKarma()}</div>
-          </div>
         </div>
-        <div
-          className="box-row"
-          style={{
-            width: "90%",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
+        <div className="box-row quotes-profile">
           <div>
-            <div className="font-orange h5">Most liked quotes</div>
+            <div className="font-orange h5" style={{ marginTop: "5%" }}>
+              Most liked quotes
+            </div>
             {showUserQuotes()}
           </div>
           <div>
-            <div className="h5">Most recent</div>
+            <div className="h5" style={{ marginTop: "5%" }}>
+              Most recent
+            </div>
             {showUserQuotes()}
           </div>
           <div>
-            <div className="h5">Liked</div>
+            <div className="h5" style={{ marginTop: "5%" }}>
+              Liked
+            </div>
             {showUserQuotes()}
           </div>
         </div>

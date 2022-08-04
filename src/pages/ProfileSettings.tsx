@@ -163,9 +163,10 @@ const ProfileSettings = () => {
               </div>
             )}
             <div
+              className="gap"
               style={{
                 display: "flex",
-                gap: "30px",
+                justifyContent: "space-between",
               }}
             >
               <div
@@ -289,7 +290,9 @@ const ProfileSettings = () => {
                 <PrimaryButton text="Submit" />
               </div>
               <Link to="/" className="link">
-                <p className="content">Cancel</p>
+                <div className="content" style={{ color: "black" }}>
+                  Cancel
+                </div>
               </Link>
             </>
           )}
