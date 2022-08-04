@@ -8,9 +8,12 @@ import QuoteCard from "../components/quotes/QuoteCard";
 import { UserType } from "../interfaces/UserType";
 import { QuoteType } from "../interfaces/QuoteType";
 import AddQuote from "../components/quotes/AddQuote";
+import useWindowDimensions from "../components/hooks/useWindowDimensions";
 
 const Home = () => {
   const isLoggedIn = localStorage.getItem("accessToken");
+  const { width } = useWindowDimensions();
+  const mobile = width! <= 768;
 
   const getQuotes = () => {
     fetch("http://localhost:5000/auth/list", {
@@ -106,8 +109,9 @@ const Home = () => {
         {!isLoggedIn ? (
           <>
             <div className="half left-text padding-five">
-              <div className="h1">
-                Welcome to <span className="font-orange h1">Quotastic</span>
+              <div className="landing-title">
+                Welcome to{" "}
+                <span className="font-orange landing-title">Quotastic</span>
               </div>
               <div className="h5">
                 Quotastic is free online platform for you to explore the quips,
@@ -117,30 +121,40 @@ const Home = () => {
                 <PrimaryButton text="Sign up" />
               </Link>
             </div>
-
-            <div className="box-row half center-align">{showRandomQuote()}</div>
+            <div
+              className={`box-row center-align quote-grid-card ${
+                !mobile && "half"
+              }`}
+              style={{ margin: "auto" }}
+            >
+              {showRandomQuote()}
+            </div>
             <div className="box-row full padding-five">
-              <div className="width h2">
+              <div className="width landing-title-h2">
                 Explore the world of{" "}
-                <span className="font-orange h2">fantastic quotes</span>
+                <span className="font-orange landing-title-h2">
+                  fantastic quotes
+                </span>
               </div>
             </div>
           </>
         ) : (
           <div className="full" style={{ padding: "5%" }}>
             <div className="box-column full center-align">
-              <div className="h4 font-orange">Quote of the day</div>
+              <div className="landing-title-h4 font-orange">
+                Quote of the day
+              </div>
               <div className="width">
                 Quote of the day is randomly choosen quote.
               </div>
             </div>
-            <div className="box-row full quote-grid">
-              <div className="quote-grid-card">{showRandomQuote()}</div>
-            </div>
+            <div className="box-row full quote-grid">{showRandomQuote()}</div>
           </div>
         )}
         <div className="box-column full center-align">
-          <div className="h4 font-orange">Most upvoted quotes</div>
+          <div className="landing-title-h4 font-orange">
+            Most upvoted quotes
+          </div>
           <div className="width">
             Most upvoted quotes on the platform. Sign up or login to like the
             quotes and keep them saved in your profile
@@ -166,7 +180,9 @@ const Home = () => {
           <>
             {" "}
             <div className="box-column full center-align">
-              <div className="h4 font-orange">Most recent quotes</div>
+              <div className="landing-title-h4 font-orange">
+                Most recent quotes
+              </div>
               <div className="width">
                 Recent quotes updates as soon user adds new quote. Go ahed show
                 them that you seen the new quote and like the ones you like.
