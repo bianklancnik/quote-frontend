@@ -39,7 +39,7 @@ const ProfileSettings = () => {
 
       let password = { newPassword: newPass };
 
-      fetch("http://localhost:5000/auth/me/update-password", {
+      fetch("http://localhost:5000/user/me/update-password", {
         method: "PATCH",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const ProfileSettings = () => {
   const getUserInformation = () => {
     const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-    fetch("http://localhost:5000/auth/me", {
+    fetch("http://localhost:5000/user/me", {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: "bearer " + token,

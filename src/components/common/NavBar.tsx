@@ -26,22 +26,24 @@ const NavBar = ({
   const [lastName, setLastName] = useState<string>();
 
   const getUserInformation = () => {
-    const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
+    if (isLoggedIn) {
+      const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-    fetch("http://localhost:5000/auth/me", {
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: "bearer " + token,
-      }),
-    })
-      .then((res) => {
-        return res.json();
+      fetch("http://localhost:5000/user/me", {
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        }),
       })
-      .then((response) => {
-        const { firstName, lastName } = response;
-        setFirstName(firstName);
-        setLastName(lastName);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          const { firstName, lastName } = response;
+          setFirstName(firstName);
+          setLastName(lastName);
+        });
+    }
   };
 
   useEffect(() => {

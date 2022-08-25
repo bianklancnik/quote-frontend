@@ -1,6 +1,10 @@
+import { VoteType } from "./VoteType";
+
 export interface QuoteType {
   id: string;
   desc: string;
-  upvotes: number;
-  downvotes: number;
+  firstName?: string;
+  lastName?: string;
+  uid?: string;
+  votes: VoteType[];
 }

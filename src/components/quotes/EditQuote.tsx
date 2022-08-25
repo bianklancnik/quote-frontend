@@ -32,8 +32,7 @@ const EditQuote = (props: any) => {
         })
         .then((result) => {
           handleClick();
-          console.log(result);
-          props.onQuoteEdit(result);
+          props.onQuoteEdit(result.id, result.desc);
         })
         .catch((err) => {
           console.error("error");
