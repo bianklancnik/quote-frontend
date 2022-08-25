@@ -4,5 +4,5 @@ export interface UserType {
   id: string;
   firstName: string;
   lastName: string;
-  quotes: QuoteType[];
+  quotes?: QuoteType[];
 }
