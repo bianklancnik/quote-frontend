@@ -29,7 +29,7 @@ const NavBar = ({
     if (isLoggedIn) {
       const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-      fetch("http://localhost:5000/user/me", {
+      fetch(`${process.env.REACT_APP_URL}/user/me`, {
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization: "bearer " + token,

@@ -13,7 +13,7 @@ const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState<QuoteType>();
 
   const getRandomQuote = () => {
-    fetch("http://localhost:5000/myquote/random-quote", {
+    fetch(`${process.env.REACT_APP_URL}/myquote/random-quote`, {
       headers: {
         "Content-Type": "application/json",
       },

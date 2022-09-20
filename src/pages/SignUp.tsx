@@ -21,7 +21,6 @@ const SignUp = () => {
     setError(false);
     setEMsg("");
     if (email || firstName || lastName || password || conPassword) {
-      let signUpUrl = "http://localhost:5000/auth/signup";
       let signUpData = {
         email: email,
         firstName: firstName,
@@ -30,7 +29,7 @@ const SignUp = () => {
         confirmPassword: conPassword,
       };
 
-      fetch(signUpUrl, {
+      fetch(`${process.env.REACT_APP_URL}/auth/signup`, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",

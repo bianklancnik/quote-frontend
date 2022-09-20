@@ -3,11 +3,9 @@ import PrimaryButton from "../common/PrimaryButton";
 const DeleteQuote = (props: any) => {
   const deleteQuote = () => {
     if (props.quoteId) {
-      let addQuoteUrl = `http://localhost:5000/myquote/${props.quoteId}`;
-
       const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-      fetch(addQuoteUrl, {
+      fetch(`${process.env.REACT_APP_URL}/myquote/${props.quoteId}`, {
         method: "DELETE",
         headers: new Headers({
           "Content-Type": "application/json",

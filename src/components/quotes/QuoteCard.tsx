@@ -1,8 +1,9 @@
-import { QuoteType } from "../../interfaces/QuoteType";
-import { IoSettingsOutline, IoCloseOutline } from "react-icons/io5";
-import Upvote from "../common/Upvote";
-import Downvote from "../common/Downvote";
 import { useEffect, useState } from "react";
+import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5";
+import "react-toastify/dist/ReactToastify.css";
+import { QuoteType } from "../../interfaces/QuoteType";
+import Downvote from "../common/Downvote";
+import Upvote from "../common/Upvote";
 
 type QuoteCardType = {
   firstName?: string;
@@ -33,7 +34,7 @@ const QuoteCard = ({
       setKarma(newKarma! + 1);
       setDownvote(!downvote);
     }
-    onVote(true);
+    if (onVote) onVote(true);
   };
 
   const Downvoted = () => {
@@ -44,7 +45,7 @@ const QuoteCard = ({
       setKarma(newKarma! - 1);
       setUpvote(!upvote);
     }
-    onVote(false);
+    if (onVote) onVote(false);
   };
 
   const calculateQuoteKarma = () => {

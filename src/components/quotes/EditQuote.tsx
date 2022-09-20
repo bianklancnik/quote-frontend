@@ -11,15 +11,13 @@ const EditQuote = (props: any) => {
 
   const submitEditedQuote = () => {
     if (quote && quote !== props.quote.desc) {
-      let editQuoteUrl = `http://localhost:5000/myquote/${props.quote.id}`;
-
       let editQuoteData = {
         desc: quote,
       };
 
       const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-      fetch(editQuoteUrl, {
+      fetch(`${process.env.REACT_APP_URL}/myquote/${props.quote.id}`, {
         method: "PATCH",
         headers: new Headers({
           "Content-Type": "application/json",
