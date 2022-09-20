@@ -1,3 +1,5 @@
+import "react-toastify/dist/ReactToastify.css";
+
 type UpvoteType = {
   id: string;
   voted: boolean;
@@ -8,9 +10,7 @@ const Upvote = ({ id, voted, onUpvote }: UpvoteType) => {
   const upvoteQuote = () => {
     const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-    let upvoteQuoteUrl = `http://localhost:5000/vote/${id}/upvote`;
-
-    fetch(upvoteQuoteUrl, {
+    fetch(`${process.env.REACT_APP_URL}/vote/${id}/upvote`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -25,10 +25,12 @@ const Upvote = ({ id, voted, onUpvote }: UpvoteType) => {
         }
       })
       .then((response) => {
-        onUpvote();
+        return onUpvote();
       })
       .catch((err) => {
-        console.error(err);
+        const x = JSON.parse(err["message"]);
+        const error = x["message"];
+        console.error(error);
       });
   };
 

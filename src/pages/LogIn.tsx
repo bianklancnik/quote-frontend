@@ -18,14 +18,12 @@ const LogIn = ({ onLogIn }: any) => {
     setError(false);
     setEMsg("");
     if (email && password) {
-      let logInUrl = "http://localhost:5000/auth/login";
-
       let logInData = {
         email: email,
         password: password,
       };
 
-      fetch(logInUrl, {
+      fetch(`${process.env.REACT_APP_URL}/auth/login`, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",

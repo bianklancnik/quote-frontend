@@ -102,7 +102,7 @@ const Profile = () => {
   const getUserInformation = () => {
     const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-    fetch("http://localhost:5000/user/me", {
+    fetch(`${process.env.REACT_APP_URL}/user/me`, {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: "bearer " + token,
@@ -128,12 +128,15 @@ const Profile = () => {
       limit = pages * 9;
     }
 
-    fetch(`http://localhost:5000/myquote/user/most-liked?limit=${limit}`, {
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: "bearer " + token,
-      }),
-    })
+    fetch(
+      `${process.env.REACT_APP_URL}/myquote/user/most-liked?limit=${limit}`,
+      {
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        }),
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -158,12 +161,15 @@ const Profile = () => {
       limit = pages * 9;
     }
 
-    fetch(`http://localhost:5000/myquote/user/most-recent?limit=${limit}`, {
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: "bearer " + token,
-      }),
-    })
+    fetch(
+      `${process.env.REACT_APP_URL}/myquote/user/most-recent?limit=${limit}`,
+      {
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: "bearer " + token,
+        }),
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -183,7 +189,7 @@ const Profile = () => {
       limit = pages * 9;
     }
 
-    fetch(`http://localhost:5000/myquote/user/liked?limit=${limit}`, {
+    fetch(`${process.env.REACT_APP_URL}/myquote/user/liked?limit=${limit}`, {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: "bearer " + token,

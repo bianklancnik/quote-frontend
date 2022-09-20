@@ -8,9 +8,7 @@ const Downvote = ({ id, voted, onDownvote }: DownvoteType) => {
   const downvoteQuote = () => {
     const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-    let downvoteQuoteUrl = `http://localhost:5000/vote/${id}/downvote`;
-
-    fetch(downvoteQuoteUrl, {
+    fetch(`${process.env.REACT_APP_URL}/vote/${id}/downvote`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

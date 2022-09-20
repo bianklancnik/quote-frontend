@@ -19,7 +19,7 @@ const MostRecent = () => {
       limit = pages * 9;
     }
 
-    fetch(`http://localhost:5000/myquote/most-recent?limit=${limit}`, {
+    fetch(`${process.env.REACT_APP_URL}/myquote/most-recent?limit=${limit}`, {
       headers: {
         "Content-Type": "application/json",
       },

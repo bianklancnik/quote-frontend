@@ -11,15 +11,13 @@ const AddQuote = (props: any) => {
 
   const submitQuote = () => {
     if (quote) {
-      let addQuoteUrl = "http://localhost:5000/myquote";
-
       let addQuoteData = {
         desc: quote,
       };
 
       const token = JSON.parse(localStorage.getItem("accessToken") || "{}");
 
-      fetch(addQuoteUrl, {
+      fetch(`${process.env.REACT_APP_URL}/myquote`, {
         method: "post",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -32,7 +30,6 @@ const AddQuote = (props: any) => {
         })
         .then((result) => {
           handleClick();
-          props.onQuoteAdd(result);
         })
         .catch((err) => {
           console.error("error");
